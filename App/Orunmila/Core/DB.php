@@ -1,17 +1,13 @@
 <?php
-namespace www\App\Core;
+namespace App\Orunmila\Core;
 
-use Exception;
-use PDO;
-use PDOException;
-use PDOStatement;
-use function www\App\Core\DB\fetch_array;
-use function www\App\Core\DB\fetch_assoc;
-use function www\App\Core\DB\num_rows;
-use function www\App\Core\DB\query;
-use function www\App\Core\DB\real_escape_string;
+use function App\Orunmila\Core\DB\fetch_array;
+use function App\Orunmila\Core\DB\fetch_assoc;
+use function App\Orunmila\Core\DB\num_rows;
+use function App\Orunmila\Core\DB\query;
+use function App\Orunmila\Core\DB\real_escape_string;
 
-class DB extends \PDO
+class DB extends PDO
 {
 
     /**
@@ -152,7 +148,7 @@ class DB extends \PDO
      *
      * @param object $result
      *            - Si el objeto del que lebanter el error no es el defoult.
-     *            
+     *
      * @return string Con el codigo del error
      */
     public function errorNro()
@@ -165,7 +161,7 @@ class DB extends \PDO
      *
      * @param object $result
      *            - Si el objeto del que lebanter el error no es el defoult.
-     *            
+     *
      * @return string Con el texto del error
      */
     public function error()
@@ -181,14 +177,14 @@ class DB extends \PDO
      * con el simbolo dos puntos ( : ) dentro de la consulta, por lo menos dentro de las consultas parametrizadas.
      *
      * @version 1.0.2 Se corrigio la funcion para que se pudieran usar consultas parametrizadas en mysql.
-     *         
+     *
      * @param string $str_query
      *            codigo de la query a ejecutar
      * @param bool $esParam
      *            Define si la consulta va a ser parametrizada o no. (por defecto false)
      * @param array $parametros
      *            Array con los parametros a pasar.
-     *            
+     *
      * @return array
      */
     public function query($str_query, $esParam = false, $parametros = array())
@@ -326,7 +322,7 @@ class DB extends \PDO
      * @param bool $limpiarEntidadesHTML
      *            true/false
      * @return array - Obtiene una fila de datos del conjunto de resultados y la devuelve como un array enumerado, donde cada columna es almacenada en un indice del array comenzando por 0 (cero). Cada llamada subsiguiente a esta funcion devolvera la siguiente fila del conjunto de resultados, o NULL si no hay mas filas.
-     *        
+     *
      */
     public function fetch_row($result, $limpiarEntidadesHTML = false)
     {
@@ -399,7 +395,7 @@ class DB extends \PDO
      *
      * @param mixed $result
      *            consulta de la cual devolver el fetch_object
-     *            
+     *
      * @return object el fetch_object de $result
      */
     public function fetch_object($result, string $class_name = "stdClass")
@@ -435,9 +431,9 @@ class DB extends \PDO
      *
      * @param mixed $stid
      *            Obligatorio para oracle es la consulta sobre la que se trabaja.$this
-     *            
+     *
      * @return mixed la cantidad de filas afectadas
-     *        
+     *
      */
     public function affected_rows($stid)
     {
@@ -666,9 +662,9 @@ class DB extends \PDO
      * @param int $nivel
      *            No enviar (es unicamente para recursividad)
      * @return array Formato: array("nivel" => X, "dato" => X, "id" => X, "padreId" => X);
-     *        
+     *
      *         Un codigo de ejemplo para hacer un arbol de categorias con links:
-     *        
+     *
      *         for ($i=0; $i<count($arbol); $i++){
      *         echo str_repeat("&nbsp;&nbsp;&nbsp;", $arbol[$i][nivel])."<a href='admin_categorias.php?c=".$arbol[$i][id]."'>".$arbol[$i][dato]."</a><br/>";
      *         }
@@ -928,7 +924,7 @@ class DB extends \PDO
      * @param int $row_number
      *            - Numero de fila a la cual apuntar.
      * @return object El resultado con el puntero modificado.
-     *        
+     *
      * @deprecated Ya no se utilizara en proximas versiones. Siempre hay una solución mejor, más clara y más fácil que buscar.
      */
     public function data_seek($result, $row_number)
@@ -964,7 +960,7 @@ class DB extends \PDO
      *
      * @author iberlot <@> iberlot@usal.edu.ar
      * @name toChar
-     *      
+     *
      * @param string $campo
      *            - Nombre del campo del que se extrae la fecha
      * @param string $nombre
@@ -1009,7 +1005,7 @@ class DB extends \PDO
      *
      * @author iberlot <@> iberlot@usal.edu.ar
      * @name toDate
-     *      
+     *
      * @param string $valor
      *            - Dato a convertir en fecha
      * @param string $mascara
@@ -1118,7 +1114,7 @@ class DB extends \PDO
      *            - Array de parametros, se pasa por parametro y se borra antes de usar.
      * @param String[] $where
      *            - Los valores del array van a ser el valor a usar en el where y los indices el nombre del campo.
-     *            
+     *
      * @return string - Retorna el string de la consulta de modificacion preparada, adicionalmente el array parametros queda cargado con los parametros a utilizar.
      */
     public function prepararConsultaUpdate($array, $tabla, &$parametros, $where)
@@ -1173,7 +1169,7 @@ class DB extends \PDO
      *            - Los valores del array van a ser el valor a usar en el where y los indices el nombre del campo.
      * @param String[] $array
      *            - Los valores del array van a ser el valor a modificar en la tabla y los indices el nombre del campo.
-     *            
+     *
      * @return string - Retorna el string de la consulta de Select preparada, adicionalmente el array parametros queda cargado con los parametros a utilizar.
      */
     public function prepararConsultaSelect($tabla, &$parametros, $where = "1=1", $array = "*")
@@ -1221,7 +1217,7 @@ class DB extends \PDO
      *            - Los valores del array van a ser el valor a usar en el where y los indices el nombre del campo.
      * @param String[] $campos
      *            - Array con los campos que se quieren buscar.
-     *            
+     *
      * @throws Exception - Retorno de errores.
      * @return boolean true en caso de estar todo OK o el error en caso de que no.
      */
@@ -1249,7 +1245,7 @@ class DB extends \PDO
      *            - Los valores del array van a ser el valor a usar en el where y los indices el nombre del campo.
      * @param String[] $campos
      *            - Array con los campos que se quieren buscar.
-     *            
+     *
      * @throws Exception - Retorno de errores.
      * @return boolean true en caso de estar todo OK o el error en caso de que no.
      */
@@ -1277,7 +1273,7 @@ class DB extends \PDO
      *            - Nombre de la tabla donde se va a realizar el Update.
      * @param String $where
      *            - Los valores del array van a ser el valor a usar en el where y los indices el nombre del campo.
-     *            
+     *
      * @throws Exception - Retorno de errores.
      * @return boolean true en caso de estar todo OK o el error en caso de que no.
      */

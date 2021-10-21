@@ -1,5 +1,5 @@
 <?php
-namespace www\App\Core;
+namespace App\Orunmila\Core;
 
 // FIXME Esto no deberia estar pero tengo un problema con las direcciones de use
 // require_once (__DIR__ . "/../Core/App.php");

@@ -4,9 +4,9 @@
  *
  * @license http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  */
-namespace www\App\Lcobucci\JWT\Signer\Ecdsa;
+namespace App\Orunmila\Lcobucci\JWT\Signer\Ecdsa;
 
-use www\App\Lcobucci\JWT\Signer\Ecdsa;
+use App\Orunmila\Lcobucci\JWT\Signer\Ecdsa;
 
 /**
  * Signer for ECDSA SHA-512

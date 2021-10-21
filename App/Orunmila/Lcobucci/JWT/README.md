@@ -30,7 +30,7 @@ composer require lcobucci/jwt
 Just use the builder to create a new JWT/JWS tokens:
 
 ```php
-use www\App\Lcobucci\JWT\Builder;
+use App\Orunmila\Lcobucci\JWT\Builder;
 
 $time = time();
 $token = (new Builder())->issuedBy('http://example.com') // Configures the issuer (iss claim)
@@ -57,7 +57,7 @@ echo $token; // The string representation of the object is a JWT string (pretty 
 Use the parser to create a new token from a JWT string (using the previous token as example):
 
 ```php
-use www\App\Lcobucci\JWT\Parser;
+use App\Orunmila\Lcobucci\JWT\Parser;
 
 $token = (new Parser())->parse((string) $token); // Parses from a string
 $token->getHeaders(); // Retrieves the token header
@@ -73,7 +73,7 @@ echo $token->getClaim('uid'); // will print "1"
 We can easily validate if the token is valid (using the previous token and time as example):
 
 ```php
-use www\App\Lcobucci\JWT\ValidationData;
+use App\Orunmila\Lcobucci\JWT\ValidationData;
 
 $data = new ValidationData(); // It will use the current time to validate (iat, nbf and exp)
 $data->setIssuer('http://example.com');
@@ -143,9 +143,9 @@ cannot be influenced by malicious users.
 Hmac signatures are really simple to be used:
 
 ```php
-use www\App\Lcobucci\JWT\Builder;
-use www\App\Lcobucci\JWT\Signer\Key;
-use www\App\Lcobucci\JWT\Signer\Hmac\Sha256;
+use App\Orunmila\Lcobucci\JWT\Builder;
+use App\Orunmila\Lcobucci\JWT\Signer\Key;
+use App\Orunmila\Lcobucci\JWT\Signer\Hmac\Sha256;
 
 $signer = new Sha256();
 $time = time();
@@ -169,9 +169,9 @@ var_dump($token->verify($signer, 'testing')); // true, because the key is the sa
 RSA and ECDSA signatures are based on public and private keys so you have to generate using the private key and verify using the public key:
 
 ```php
-use www\App\Lcobucci\JWT\Builder;
-use www\App\Lcobucci\JWT\Signer\Key;
-use www\App\Lcobucci\JWT\Signer\Rsa\Sha256; // you can use www\App\Lcobucci\JWT\Signer\Ecdsa\Sha256 if you're using ECDSA keys
+use App\Orunmila\Lcobucci\JWT\Builder;
+use App\Orunmila\Lcobucci\JWT\Signer\Key;
+use App\Orunmila\Lcobucci\JWT\Signer\Rsa\Sha256; // you can use App\Orunmila\Lcobucci\JWT\Signer\Ecdsa\Sha256 if you're using ECDSA keys
 
 $signer = new Sha256();
 $privateKey = new Key('file://{path to your private key}');

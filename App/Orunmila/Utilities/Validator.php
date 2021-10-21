@@ -1,5 +1,5 @@
 <?php
-namespace www\App\Utilities;
+namespace App\Orunmila\Utilities;
 
 /*
  * Implementación realizada en clase de nuestra clase de Validación :)

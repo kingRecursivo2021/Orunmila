@@ -34,7 +34,7 @@
  * totalHorasPerdidasAqui = 177
  *
  */
-namespace www\App\Core;
+namespace App\Orunmila\Core;
 
 use Exception;
 

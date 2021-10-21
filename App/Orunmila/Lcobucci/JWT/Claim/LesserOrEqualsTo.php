@@ -4,12 +4,12 @@
  *
  * @license http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  */
-namespace www\App\Lcobucci\JWT\Claim;
+namespace App\Orunmila\Lcobucci\JWT\Claim;
 
-use www\App\Lcobucci\JWT\Claim;
-use www\App\Lcobucci\JWT\ValidationData;
-use www\App\Lcobucci\JWT\Claim\Basic;
-use www\App\Lcobucci\JWT\Claim\Validatable;
+use App\Orunmila\Lcobucci\JWT\Claim;
+use App\Orunmila\Lcobucci\JWT\ValidationData;
+use App\Orunmila\Lcobucci\JWT\Claim\Basic;
+use App\Orunmila\Lcobucci\JWT\Claim\Validatable;
 
 /**
  * Validatable claim that checks if value is lesser or equals to the given data

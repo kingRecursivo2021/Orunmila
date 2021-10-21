@@ -16,7 +16,7 @@ $rootPath = str_replace('\\', '/', $rootPath);
 require $rootPath . '/app/routes.php';
 
 // Instanciamos nuestra App.
-$app = new \DaVinci\Core\App($rootPath);
+$app = new \Orunmila\Core\App($rootPath);
 
 // Arrancamos la App.
 $app->run();

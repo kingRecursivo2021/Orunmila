@@ -1,5 +1,5 @@
 <?php
-namespace www\App\Core;
+namespace App\Orunmila\Core;
 
 /**
  * Class Route

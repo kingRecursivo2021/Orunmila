@@ -4,7 +4,7 @@
  *
  * @license http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  */
-namespace www\App\Lcobucci\JWT;
+namespace App\Orunmila\Lcobucci\JWT;
 
 /**
  * Class that wraps validation values
