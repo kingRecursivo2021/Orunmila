@@ -7,10 +7,13 @@ session_start();
 /*
  *
  */
-DBConnection::setDbHost("localhost");
-DBConnection::setDbUser("martinsa_user_sub_online");
-DBConnection::setDbPass("uqZ1dyV#Zd]q");
-DBConnection::setDbName("martinsa_subastas_online");
+
+// configuracion de la BD
+
+DBConnection::setDbHost("190.228.29.68");
+DBConnection::setDbUser("frey");
+DBConnection::setDbPass("rkiGCB6cuzC2");
+DBConnection::setDbName("mel_recu");
 DBConnection::setCharset("utf8");
 DBConnection::setDebug(FALSE);
 DBConnection::setDieOnError(FALSE);

@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="../public/inc/css/estylo.css" />
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
+
 <body>
+
+<?php 
+	include "navBar.php"
+?>
+
 <h1>Administrativos Screen</h1>
 
-<body>
-
-<div>
+<div class="mostrar">
 
 	<form method="post" action="" name="altaAlumnos" >
     <div class="form-element">
@@ -62,7 +67,7 @@
 
 <br>
 
-<div>
+<div class="ocultar">
 	<form action="" name="modificarAlumnos">
 		<div>
 			<h3>Modificar datos de alumno</h3>
@@ -75,7 +80,7 @@
 
 <br>
 
-<div>
+<div class="ocultar">
 	<form action="" name="bajaAlumnos">
 		<div>
 			<h3>Baja de alumno</h3>
@@ -88,7 +93,7 @@
 
 <br>
 
-<div>
+<div class="ocultar">
 	<form method="post" action="" name="altaMaterias" >
 	
 	    <div class="form-element">
@@ -120,7 +125,7 @@
 
 <br>
 
-<div>
+<div class="ocultar">
 	<form action="" name="modificarMaterias">
 		<div>
 			<h3>Modificar datos de materia</h3>
@@ -133,7 +138,7 @@
 
 <br>
 
-<div>
+<div class="ocultar">
 	<form action="" name ="bajaMaterias">
 		<div>
 			<h3>Baja de materia</h3>
