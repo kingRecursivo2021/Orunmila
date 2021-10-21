@@ -17,8 +17,6 @@ namespace www\App\Utilities;
  * print_r($validator->getErrores());
  * }
  */
-use Exception;
-
 class Validator
 {
 
