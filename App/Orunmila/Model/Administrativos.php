@@ -1,72 +1,95 @@
 <?php
+namespace App\Orunmila\Modelo;
 
-class Administrativos{
+class Administrativos
+{
 
     public $dni;
+
     public $nombre;
+
     public $apellido;
+
     public $mail;
+
     public $direccion;
+
     public $telefono;
+
     public $genero;
-       
-    function __construct($dni){
-        $this->dni = $dni; // será asi??
+
+    function __construct($dni)
+    {
+        $this->dni = $dni; // serï¿½ asi??
     }
-    
-    public function getGenero(): string {
+
+    public function getGenero(): string
+    {
         return $this->genero;
     }
-    
-    public function setGenero($genero): void {
+
+    public function setGenero($genero): void
+    {
         $this->genero = $genero;
     }
-    
-    public function getDni(): int {
+
+    public function getDni(): int
+    {
         return $this->dni;
     }
-    
-    public function setDni($dni): void {
+
+    public function setDni($dni): void
+    {
         $this->dni = $dni;
     }
-    
-    public function getNombre(): string{
+
+    public function getNombre(): string
+    {
         return $this->nombre;
     }
-    
-    public function setNombre($nombre): void {
+
+    public function setNombre($nombre): void
+    {
         $this->nombre = $nombre;
     }
-    
-    public function getApellido(): string {
+
+    public function getApellido(): string
+    {
         return $this->apellido;
     }
-    
-    public function setApellido($apellido) {
+
+    public function setApellido($apellido)
+    {
         $this->apellido = $apellido;
     }
- 
-    public function getMail(): string {
+
+    public function getMail(): string
+    {
         return $this->mail;
     }
-    
-    public function setMail($mail): void {
+
+    public function setMail($mail): void
+    {
         $this->mail = $mail;
     }
-    
-    public function getDireccion(): string {
+
+    public function getDireccion(): string
+    {
         return $this->direccion;
     }
-    
-    public function setDireccion($direccion): void{
+
+    public function setDireccion($direccion): void
+    {
         $this->direccion = $direccion;
     }
-    
-    public function getTelefono(): int{
+
+    public function getTelefono(): int
+    {
         return $this->telefono;
     }
-    
-    public function setTelefono($telefono): void {
+
+    public function setTelefono($telefono): void
+    {
         $this->telefono = $telefono;
     }
 }
