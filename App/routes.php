@@ -6,7 +6,7 @@
  * Para esto, vamos a crear una clase Route cuya
  * función sea la de registrar y administrar las rutas.
  */
-use DaVinci\Core\Route;
+use App\Orunmila\Core\Route;
 
 // Registramos la primer ruta! :D
 // Route es la clase encargada del manejo de las rutas.
@@ -18,18 +18,18 @@ use DaVinci\Core\Route;
 Route::add('GET', '/', 'HomeController@index');
 
 /*
- |--------------------------------------------------------------------------
- | Autenticación
- |--------------------------------------------------------------------------
+ * |--------------------------------------------------------------------------
+ * | Autenticación
+ * |--------------------------------------------------------------------------
  */
 Route::add('GET', '/iniciar-sesion', 'AuthController@loginForm');
 Route::add('POST', '/iniciar-sesion', 'AuthController@loginProcesar');
 Route::add('POST', '/cerrar-sesion', 'AuthController@logout');
 
 /*
- |--------------------------------------------------------------------------
- | Productos
- |--------------------------------------------------------------------------
+ * |--------------------------------------------------------------------------
+ * | Productos
+ * |--------------------------------------------------------------------------
  */
 // Registramos una ruta para el listado de productos.
 Route::add('GET', '/productos', 'ProductosController@listado');

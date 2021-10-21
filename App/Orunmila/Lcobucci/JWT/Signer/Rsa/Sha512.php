@@ -4,9 +4,9 @@
  *
  * @license http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  */
-namespace www\App\Lcobucci\JWT\Signer\Rsa;
+namespace App\Orunmila\Lcobucci\JWT\Signer\Rsa;
 
-use www\App\Lcobucci\JWT\Signer\Rsa;
+use App\Orunmila\Lcobucci\JWT\Signer\Rsa;
 
 /**
  * Signer for RSA SHA-512

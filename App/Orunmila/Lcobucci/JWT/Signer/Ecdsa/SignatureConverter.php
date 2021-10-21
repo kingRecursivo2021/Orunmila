@@ -1,5 +1,5 @@
 <?php
-namespace www\App\Lcobucci\JWT\Signer\Ecdsa;
+namespace App\Orunmila\Lcobucci\JWT\Signer\Ecdsa;
 
 /**
  * Manipulates the result of a ECDSA signature (points R and S) according to the

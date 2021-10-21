@@ -1,7 +1,7 @@
 <?php
-namespace www\App\Core;
+namespace App\Orunmila\Core;
 
-use www\App\Envorinment\Loader;
+use App\Orunmila\Envorinment\Loader;
 
 /**
  * Class App

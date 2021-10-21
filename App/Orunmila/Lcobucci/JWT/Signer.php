@@ -4,10 +4,10 @@
  *
  * @license http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  */
-namespace www\App\Lcobucci\JWT;
+namespace App\Orunmila\Lcobucci\JWT;
 
 use InvalidArgumentException;
-use www\App\Lcobucci\JWT\Signer\Key;
+use App\Orunmila\Lcobucci\JWT\Signer\Key;
 
 /**
  * Basic interface for token signers

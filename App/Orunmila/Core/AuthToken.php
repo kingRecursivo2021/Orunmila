@@ -1,14 +1,12 @@
 <?php
-namespace www\App\Core;
+namespace App\Orunmila\Core;
 
-use Exception;
-use www\App\Envorinment\Parser;
-use www\App\Lcobucci\JWT\Builder;
-use www\App\Lcobucci\JWT\Token;
-use www\App\Lcobucci\JWT\ValidationData;
-use www\App\Lcobucci\JWT\Signer\Key;
-use www\App\Lcobucci\JWT\Signer\Hmac\Sha256;
-use www\App\Modelo\Usuarios;
+use App\Orunmila\Envorinment\Parser;
+use App\Orunmila\Lcobucci\JWT\Builder;
+use App\Orunmila\Lcobucci\JWT\Token;
+use App\Orunmila\Lcobucci\JWT\ValidationData;
+use App\Orunmila\Lcobucci\JWT\Signer\Key;
+use App\Orunmila\Lcobucci\JWT\Signer\Hmac\Sha256;
 
 /**
  * Class Auth
@@ -23,7 +21,7 @@ class AuthToken
 {
 
     // Esto podría, aún mejor, estar en un archivo externo de configuración (ej: ".env") que php levante.
-    const JWT_ISSUER = 'https://davinci.edu.ar';
+    const JWT_ISSUER = 'https://Orunmila.edu.ar';
 
     const JWT_SECRET = '8u12821unp2+doimd82jkalss033nhfv8-g576h3dfd2';
 

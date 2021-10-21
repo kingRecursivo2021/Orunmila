@@ -1,11 +1,12 @@
 <?php
-namespace DaVinci\Auth;
+namespace App\Orunmila\Auth;
 
-use DaVinci\Models\Usuario;
-use Davinci\Storage\Session;
+use Orunmila\Models\Usuario;
+use Orunmila\Storage\Session;
 
 class Auth
 {
+
     /**
      * Intenta autenticar al usuario.
      * Si tiene éxito, retorna true.
@@ -18,13 +19,13 @@ class Auth
     public function login(string $email, string $password): bool
     {
         // Buscamos el usuario por su email.
-        $user = new Usuario;
+        $user = new Usuario();
         $user = $user->getByEmail($email);
 
         // Verificamos si hay un usuario.
-        if($user !== null) {
+        if ($user !== null) {
             // Comparamos los passwords.
-            if(password_verify($password, $user->getPassword())) {
+            if (password_verify($password, $user->getPassword())) {
                 $this->setAsAuthenticated($user);
                 return true;
             }
@@ -47,7 +48,7 @@ class Auth
      */
     public function logout(): void
     {
-//        unset($_SESSION['id']);
+        // unset($_SESSION['id']);
         Session::delete('id');
     }
 
@@ -58,7 +59,7 @@ class Auth
      */
     public function isAuthenticated(): bool
     {
-//        return isset($_SESSION['id']);
+        // return isset($_SESSION['id']);
         return Session::has('id');
     }
 
@@ -70,11 +71,11 @@ class Auth
      */
     public function getUser()
     {
-        if(!$this->isAuthenticated()) {
+        if (!$this->isAuthenticated()) {
             return null;
         }
 
-        $usuario = new Usuario;
+        $usuario = new Usuario();
         return $usuario->getByPk(Session::get('id'));
     }
 }

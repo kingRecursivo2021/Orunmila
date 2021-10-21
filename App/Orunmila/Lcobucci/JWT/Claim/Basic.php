@@ -4,9 +4,9 @@
  *
  * @license http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  */
-namespace www\App\Lcobucci\JWT\Claim;
+namespace App\Orunmila\Lcobucci\JWT\Claim;
 
-use www\App\Lcobucci\JWT\Claim;
+use App\Orunmila\Lcobucci\JWT\Claim;
 
 /**
  * The default claim

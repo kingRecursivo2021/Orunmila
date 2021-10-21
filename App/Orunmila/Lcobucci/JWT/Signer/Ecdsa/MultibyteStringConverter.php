@@ -9,7 +9,7 @@
  *
  * @link https://github.com/web-token/jwt-framework/blob/v1.2/src/Component/Core/Util/ECSignature.php
  */
-namespace www\App\Lcobucci\JWT\Signer\Ecdsa;
+namespace App\Orunmila\Lcobucci\JWT\Signer\Ecdsa;
 
 use InvalidArgumentException;
 use function bin2hex;

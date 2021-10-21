@@ -4,7 +4,7 @@
  *
  * @license http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  */
-namespace www\App\Lcobucci\JWT\Parsing;
+namespace App\Orunmila\Lcobucci\JWT\Parsing;
 
 use RuntimeException;
 

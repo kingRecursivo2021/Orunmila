@@ -1,5 +1,5 @@
 <?php
-namespace www\App\Utilities;
+namespace App\Orunmila\Utilities;
 
 class Str
 {

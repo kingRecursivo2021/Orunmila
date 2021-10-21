@@ -6,7 +6,7 @@
  * @return string
  */
 function url(string $url = null) {
-    return \DaVinci\Core\App::urlTo($url);
+    return \Orunmila\Core\App::urlTo($url);
 }
 
 /**
@@ -16,5 +16,5 @@ function url(string $url = null) {
  * @return mixed
  */
 function urlParam($clave) {
-    return \DaVinci\Core\Route::getUrlParameters()[$clave];
+    return \Orunmila\Core\Route::getUrlParameters()[$clave];
 }

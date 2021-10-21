@@ -4,10 +4,10 @@
  *
  * @license http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  */
-namespace www\App\Lcobucci\JWT\Signer;
+namespace App\Orunmila\Lcobucci\JWT\Signer;
 
-use www\App\Lcobucci\JWT\Signer\Ecdsa\MultibyteStringConverter;
-use www\App\Lcobucci\JWT\Signer\Ecdsa\SignatureConverter;
+use App\Orunmila\Lcobucci\JWT\Signer\Ecdsa\MultibyteStringConverter;
+use App\Orunmila\Lcobucci\JWT\Signer\Ecdsa\SignatureConverter;
 use const OPENSSL_KEYTYPE_EC;
 
 /**

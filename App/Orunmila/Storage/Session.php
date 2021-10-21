@@ -1,6 +1,6 @@
 <?php
 
-namespace Davinci\Storage;
+namespace Orunmila\Storage;
 
 /**
  * Class Session
@@ -9,7 +9,7 @@ namespace Davinci\Storage;
  * utilizar para esta funcionalidad la implementación nativa de php (sin mencionar que en el futuro
  * php podría cambiar esa implementación).
  *
- * @package Davinci\Storage
+ * @package Orunmila\Storage
  */
 class Session
 {
