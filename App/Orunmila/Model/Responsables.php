@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Orunmila\Modelo;
-use App\Orunmila\Modelo\Personas;
+use App\Orunmila\Model\Personas;
 
     class Responsables extends Personas{
         
-        function __construct($dni, $nombre, $apellido, $mail, $direccion, $telefono, $genero) {
-            super($dni, $nombre, $apellido, $mail, $direccion, $telefono, $genero);
+        function __construct() {
+            
         }
         
     }

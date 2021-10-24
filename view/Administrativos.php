@@ -17,7 +17,7 @@
 
 <div class="mostrar">
 
-	<form method="post" action="" name="altaAlumnos" >
+	<form method="post" action="../App/Orunmila/Controllers/AlumnosController.php" name="altaAlumnos" >
     <div class="form-element">
     <h3>Alta de alumno</h3>
     </div>
@@ -52,13 +52,19 @@
     
      <div class="form-element">
         <label>Telefono</label>
-        <input type="tel" name="telefono" required />
+        <input type="number" name="telefono" required />
+    </div>
+        
+    <div class="form-element">
+        <label>Email</label>
+        <input type="email" name="email" required />
+    </div>
+    	 
+    <div class="form-element">
+        <label>Password</label>
+        <input type="password" name="password" required />
     </div>
     
-     <div class="form-element">
-        <label>Email</label>
-        <input type="email" name="Email" required />
-    </div>
     <button class ="btn btn-primary" type="submit" name="ingresar" value="login">Registrar</button>
     
 </form>

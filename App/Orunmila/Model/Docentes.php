@@ -1,13 +1,32 @@
 <?php
 
-namespace App\Orunmila\Modelo;
-use App\Orunmila\Modelo\Personas;
+namespace App\Orunmila\Model;
 
 class Docentes extends Personas{
+    
+    private $materia;
  
-    function __construct($dni, $nombre, $apellido, $mail, $direccion, $telefono, $genero) {
-        super($dni, $nombre, $apellido, $mail, $direccion, $telefono, $genero);
+    /**
+     * @return mixed
+     */
+    
+    function __construct() {
+        
+    }    
+    
+    public function getMateria()
+    {
+        return $this->materia;
     }
+
+    /**
+     * @param mixed $materia
+     */
+    public function setMateria($materia)
+    {
+        $this->materia = $materia;
+    }   
+    
 }
 
 ?>
