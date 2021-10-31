@@ -17,7 +17,7 @@
 
 <div class="mostrar">
 
-	<form method="post" action="../App/Orunmila/Controllers/AlumnosController.php" name="altaAlumnos" >
+	<form method="POST" action="../App/Orunmila/Controllers/AlumnosController.php" name="altaAlumnos" >
     <div class="form-element">
     <h3>Alta de alumno</h3>
     </div>

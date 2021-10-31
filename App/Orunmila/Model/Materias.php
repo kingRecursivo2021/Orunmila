@@ -24,7 +24,6 @@ class Materias
     
     private $eventos = Array();
     
-    
     public function __construct() {
 
     }

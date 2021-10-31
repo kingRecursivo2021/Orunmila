@@ -1,48 +1,9 @@
 <?php
-/**
- * Esta clase se va a encargar de todo lo referente a las bases de datos.
- * Recuperacion e insercion de datos, conexiones ect.
- *
- * @author iberlot <@> ivanberlot@gmail.com
- *
- * @version 3.1.3
- *          (A partir de la version 3.0 - Se actualizaron las funciones obsoletas y corrigieron algunos errores.)
- *          (A partir de la version 3.1 - Se incluye la opcion de parametrizar las consultas.)
- *          (A partir de la version 3.1.1 - Se Se modifico para que los parametros no contemplaran el parentesis de sierre, ademas de que en el
- *          debug el valor de estos apareciera comentado)
- *          (A partir de la version 3.1.2 - Se corrigio el error que no mostraba los errores generados en oracle.)
- *          (A partir de la version 3.1.3 - Se agragan las funciones creadoras de consultas por medio de arrays de datos.)
- *
- * @category Edicion
- *
- * @todo Hay que acomodar el manejo de errores para que quede mas practico.
- *
- * @link config/includes.php - Archivo con todos los includes del sistema
- *
- */
 
-/*
- * Querido programador:
- *
- * Cuando escribi este codigo, solo Dios y yo sabiamos como funcionaba.
- * Ahora, Solo Dios lo sabe!!!
- *
- * Asi que, si esta tratando de 'optimizar' esta rutina y fracasa (seguramente),
- * por favor, incremente el siguiente contador como una advertencia para el
- * siguiente colega:
- *
- * totalHorasPerdidasAqui = 177
- *
- */
 namespace App\Orunmila\Core;
 
 use Exception;
 
-/**
- *
- * @author IVANB
- *        
- */
 class DBConnection
 {
 

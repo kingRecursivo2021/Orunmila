@@ -4,7 +4,7 @@
     
     use App\Orunmila\Model\Alumnos;
                 
-    require_once '/App/Core/config.php';
+    require_once '/App/Orunmila/Core/config.php';
         
     $alumno = new Alumnos($_POST["dni"], 
         $_POST["nombre"], $_POST["apellido"], $_POST["email"], 
