@@ -122,6 +122,7 @@ abstract class Personas
         $this->telefono = $telefono;
     }
 
+        if (mysqli_connect_errno()) {
     public function save()
     {
 
