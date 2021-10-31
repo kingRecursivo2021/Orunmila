@@ -1,8 +1,6 @@
 <?php
 namespace App\Orunmila\Model;
 
-use App\Orunmila\Core\DBConnection;
-
 abstract class Personas
 {
 
@@ -129,21 +127,28 @@ abstract class Personas
 
         // $db = DBConnection::getConnection();
         $db = mysqli_connect("190.228.29.68", "frey", "rkiGCB6cuzC2", "mel_recu");
-        
+
         if (mysqli_connect_errno()) {
-            printf("Falló la conexión: %s\n", mysqli_connect_error());
+            printf("Fallï¿½ la conexiï¿½n: %s\n", mysqli_connect_error());
             exit();
         }
 
-        $sql = "INSERT INTO mel_recu.persona (dni, nombre, apellido, mail, direccion, telefono, genero, fecha_nacimiento, password ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-//         $stm = $db->stmt_init();
-//         $stm->prepare($sql);
-
-//         $parametros = array();
         $parametros = $this->jsonSerialize();
 
-//         $stm->bind_param("sssssssss", $parametros['dni'], $parametros['nombre'], $parametros['apellido'], $parametros['mail'], $parametros['direccion'], $parametros['telefono'], $parametros['genero'], $parametros['fecha_nacimiento'], $parametros['password']);
+        // $sql = "INSERT INTO mel_recu.persona (dni, nombre, apellido, mail, direccion, telefono, genero, fecha_nacimiento, password ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO mel_recu.persona (dni, nombre, apellido, mail, direccion, telefono, genero, fecha_nacimiento, password )
+VALUES ('" . $parametros['dni'] . "', '" . $parametros['nombre'] . "', '" . $parametros['apellido'] . "', '" . $parametros['mail'] . "', '" . $parametros['direccion'] . "', '" . $parametros['telefono'] . "', '" . $parametros['genero'] . "', '" . $parametros['fecha_nacimiento'] . "', '" . $parametros['password'] . "')";
+
+        if (mysqli_query($db, $sql) === TRUE) {
+            printf("Se inserto con Ã©xtio en la tabla person.\n");
+        }
+
+        // $stm = $db->stmt_init();
+        // $stm->prepare($sql);
+
+        // $parametros = array();
+
+        // $stm->bind_param("sssssssss", $parametros['dni'], $parametros['nombre'], $parametros['apellido'], $parametros['mail'], $parametros['direccion'], $parametros['telefono'], $parametros['genero'], $parametros['fecha_nacimiento'], $parametros['password']);
 
         // if ($stm->execute()) {
         // return true;
@@ -151,37 +156,37 @@ abstract class Personas
         // return false;
         // }
 
-        $sentencia = mysqli_stmt_init($db);
-        if (mysqli_stmt_prepare($sentencia, $sql)) {
+        // $sentencia = mysqli_stmt_init($db);
+        // if (mysqli_stmt_prepare($sentencia, $sql)) {
 
-            /* vincular los parámetros para los marcadores */
-            mysqli_stmt_bind_param($sentencia, "sssssssss", $parametros['dni'], $parametros['nombre'], $parametros['apellido'], $parametros['mail'], $parametros['direccion'], $parametros['telefono'], $parametros['genero'], $parametros['fecha_nacimiento'], $parametros['password']);
+        // /* vincular los parï¿½metros para los marcadores */
+        // mysqli_stmt_bind_param($sentencia, "sssssssss", $parametros['dni'], $parametros['nombre'], $parametros['apellido'], $parametros['mail'], $parametros['direccion'], $parametros['telefono'], $parametros['genero'], $parametros['fecha_nacimiento'], $parametros['password']);
 
-            /* ejecutar la consulta */
-            if (mysqli_stmt_execute($sentencia)) {
-                print_r("true");
-                return true;
-            } else {
-                print_r("false");
-                return false;
-            }
-            // /* vincular las variables de resultados */
-            // mysqli_stmt_bind_result($sentencia, $distrito);
+        // /* ejecutar la consulta */
+        // if (mysqli_stmt_execute($sentencia)) {
+        // print_r("true");
+        // return true;
+        // } else {
+        // print_r("false");
+        // return false;
+        // }
+        // // /* vincular las variables de resultados */
+        // // mysqli_stmt_bind_result($sentencia, $distrito);
 
-            // /* obtener el valor */
-            // mysqli_stmt_fetch($sentencia);
+        // // /* obtener el valor */
+        // // mysqli_stmt_fetch($sentencia);
 
-            // printf("%s está en el distrito de %s\n", $ciudad, $distrito);
+        // // printf("%s estï¿½ en el distrito de %s\n", $ciudad, $distrito);
 
-            /* cerrar la sentencia */
-            mysqli_stmt_close($sentencia);
-        }
-        
-        else{
-            print_r("llorar");
-        }
+        // /* cerrar la sentencia */
+        // mysqli_stmt_close($sentencia);
+        // }
 
-        /* cerrar la conexión */
+        // else{
+        // print_r("llorar");
+        // }
+
+        /* cerrar la conexiï¿½n */
         mysqli_close($db);
     }
 
