@@ -2,9 +2,12 @@
 
     namespace App\Orunmila\Controllers;
     
+    include '../Model/Alumnos.php';
+    require_once '../Core/config.php';
+    
     use App\Orunmila\Model\Alumnos;
-                
-    require_once '/App/Orunmila/Core/config.php';
+   // http://localhost/Orunmila/App/Orunmila/Controllers/AlumnosController.php
+  // print_r($_SERVER); 
         
     $alumno = new Alumnos($_POST["dni"], 
         $_POST["nombre"], $_POST["apellido"], $_POST["email"], 

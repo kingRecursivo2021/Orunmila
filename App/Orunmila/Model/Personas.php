@@ -19,21 +19,20 @@ abstract class Personas
     private $telefono;
 
     private $genero;
-    
+
     private $fecha_nacimiento;
-    
+
     private $password;
 
     /**
+     *
      * @return mixed
      */
-
     public function __construct()
-    {
+    {}
 
-    }
-    
-    public function cargaPersonas($dni, $nombre, $apellido, $mail, $direccion, $telefono, $genero, $fecha_nacimiento, $password) {
+    public function cargaPersonas($dni, $nombre, $apellido, $mail, $direccion, $telefono, $genero, $fecha_nacimiento, $password)
+    {
         $this->dni = $dni;
         $this->nombre = $nombre;
         $this->apellido = $apellido;
@@ -44,8 +43,7 @@ abstract class Personas
         $this->fecha_nacimiento = $fecha_nacimiento;
         $this->password = $password;
     }
-    
-    
+
     public function getFecha_nacimiennto()
     {
         return $this->fecha_nacimiennto;
@@ -125,28 +123,72 @@ abstract class Personas
     {
         $this->telefono = $telefono;
     }
-    
-    public function save() {
 
-            $db = DBConnection::getConnection();
-            
-            $sql = "INSERT INTO mel_recu.alumno (dni, nombre, apellido, mail, direccion, telefono, genero, fecha_nacimiento, password ) VALUES (:dni, :nombre, :apellido, :mail, :direccion, :telefono, :genero, :fecha_nacimiento, :password)";
-            
-            $parametros = array();
-            $parametros = $this->jsonSerialize();
-            
-            if ($db->query($sql, true, $parametros)) {
+    public function save()
+    {
+
+        // $db = DBConnection::getConnection();
+        $db = mysqli_connect("190.228.29.68", "frey", "rkiGCB6cuzC2", "mel_recu");
+        
+        if (mysqli_connect_errno()) {
+            printf("Falló la conexión: %s\n", mysqli_connect_error());
+            exit();
+        }
+
+        $sql = "INSERT INTO mel_recu.persona (dni, nombre, apellido, mail, direccion, telefono, genero, fecha_nacimiento, password ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+//         $stm = $db->stmt_init();
+//         $stm->prepare($sql);
+
+//         $parametros = array();
+        $parametros = $this->jsonSerialize();
+
+//         $stm->bind_param("sssssssss", $parametros['dni'], $parametros['nombre'], $parametros['apellido'], $parametros['mail'], $parametros['direccion'], $parametros['telefono'], $parametros['genero'], $parametros['fecha_nacimiento'], $parametros['password']);
+
+        // if ($stm->execute()) {
+        // return true;
+        // } else {
+        // return false;
+        // }
+
+        $sentencia = mysqli_stmt_init($db);
+        if (mysqli_stmt_prepare($sentencia, $sql)) {
+
+            /* vincular los parámetros para los marcadores */
+            mysqli_stmt_bind_param($sentencia, "sssssssss", $parametros['dni'], $parametros['nombre'], $parametros['apellido'], $parametros['mail'], $parametros['direccion'], $parametros['telefono'], $parametros['genero'], $parametros['fecha_nacimiento'], $parametros['password']);
+
+            /* ejecutar la consulta */
+            if (mysqli_stmt_execute($sentencia)) {
+                print_r("true");
                 return true;
             } else {
+                print_r("false");
                 return false;
             }
+            // /* vincular las variables de resultados */
+            // mysqli_stmt_bind_result($sentencia, $distrito);
+
+            // /* obtener el valor */
+            // mysqli_stmt_fetch($sentencia);
+
+            // printf("%s está en el distrito de %s\n", $ciudad, $distrito);
+
+            /* cerrar la sentencia */
+            mysqli_stmt_close($sentencia);
+        }
         
+        else{
+            print_r("llorar");
+        }
+
+        /* cerrar la conexión */
+        mysqli_close($db);
     }
-    
+
     public function jsonSerialize()
     {
         $parametros = array();
-        
+
         $parametros['nombre'] = $this->nombre;
         $parametros['apellido'] = $this->apellido;
         $parametros['mail'] = $this->mail;
@@ -155,7 +197,7 @@ abstract class Personas
         $parametros['genero'] = $this->genero;
         $parametros['fecha_nacimiento'] = $this->fecha_nacimiento;
         $parametros['password'] = $this->password;
-        
+
         return $parametros;
     }
 }

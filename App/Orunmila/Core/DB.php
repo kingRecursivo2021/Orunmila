@@ -7,7 +7,7 @@ use function App\Orunmila\Core\DB\num_rows;
 use function App\Orunmila\Core\DB\query;
 use function App\Orunmila\Core\DB\real_escape_string;
 
-class DB extends PDO
+class DB extends PDO 
 {
 
     /**

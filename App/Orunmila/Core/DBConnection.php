@@ -4,6 +4,8 @@ namespace App\Orunmila\Core;
 
 use Exception;
 
+include 'DB.php';
+
 class DBConnection
 {
 

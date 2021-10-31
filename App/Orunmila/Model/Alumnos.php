@@ -2,6 +2,8 @@
 
 namespace App\Orunmila\Model;
 
+include 'Personas.php';
+
 class Alumnos extends Personas{
     
     private $responsable;
