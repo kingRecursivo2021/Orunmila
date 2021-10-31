@@ -122,7 +122,7 @@ abstract class Personas
         $this->telefono = $telefono;
     }
 
-        if (mysqli_connect_errno()) {
+       
     public function save()
     {
 
@@ -203,6 +203,7 @@ VALUES ('" . $parametros['dni'] . "', '" . $parametros['nombre'] . "', '" . $par
         $parametros['genero'] = $this->genero;
         $parametros['fecha_nacimiento'] = $this->fecha_nacimiento;
         $parametros['password'] = $this->password;
+        $parametros['telefono'] = $this->telefono;
 
         return $parametros;
     }
