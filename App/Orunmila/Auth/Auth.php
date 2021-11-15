@@ -1,12 +1,13 @@
 <?php
 namespace App\Orunmila\Auth;
 
-use Orunmila\Models\Usuario;
+include '../Model/Personas.php';
+include '../Storage/Session.php';
+use App\Orunmila\Model\Personas;
 use Orunmila\Storage\Session;
 
 class Auth
 {
-
     /**
      * Intenta autenticar al usuario.
      * Si tiene éxito, retorna true.
@@ -19,8 +20,8 @@ class Auth
     public function login(string $email, string $password): bool
     {
         // Buscamos el usuario por su email.
-        $user = new Usuario();
-        $user = $user->getByEmail($email);
+        $user = new Personas();
+        $user = $user->getMail($email);
 
         // Verificamos si hay un usuario.
         if ($user !== null) {
@@ -36,11 +37,11 @@ class Auth
     /**
      * Marca el $user como autenticado.
      *
-     * @param Usuario $user
+     * @param Personas $user
      */
-    public function setAsAuthenticated(Usuario $user): void
+    public function setAsAuthenticated(Personas $user): void
     {
-        Session::set('id', $user->getId());
+        Personas::set('id', $user->getId());
     }
 
     /**
@@ -67,7 +68,7 @@ class Auth
      * Retorna el usuario autenticado.
      * Si no está autenticado, retorna null.
      *
-     * @return Usuario|null
+     * @return Personas|null
      */
     public function getUser()
     {
@@ -75,7 +76,7 @@ class Auth
             return null;
         }
 
-        $usuario = new Usuario();
+        $usuario = new Personas();
         return $usuario->getByPk(Session::get('id'));
     }
 }

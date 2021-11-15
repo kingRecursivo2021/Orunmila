@@ -9,6 +9,7 @@ namespace App\Orunmila\Lcobucci\JWT\Claim;
 use App\Orunmila\Lcobucci\JWT\Claim;
 use App\Orunmila\Lcobucci\JWT\ValidationData;
 
+
 /**
  * Validatable claim that checks if value is strictly equals to the given data
  *

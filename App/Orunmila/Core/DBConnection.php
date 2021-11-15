@@ -140,6 +140,7 @@ class DBConnection
             self::$db->setMostrarErrores(self::$mostrarErrores);
         }
         // Retornamos la conexión.
+        
         return self::$db;
     }
 

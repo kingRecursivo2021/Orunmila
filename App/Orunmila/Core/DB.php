@@ -6,6 +6,10 @@ use function App\Orunmila\Core\DB\fetch_assoc;
 use function App\Orunmila\Core\DB\num_rows;
 use function App\Orunmila\Core\DB\query;
 use function App\Orunmila\Core\DB\real_escape_string;
+use Exception;
+use PDO;
+use PDOException;
+use PDOStatement;
 
 class DB extends PDO 
 {

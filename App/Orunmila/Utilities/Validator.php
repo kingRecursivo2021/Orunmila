@@ -1,6 +1,8 @@
 <?php
 namespace App\Orunmila\Utilities;
 
+use Exception;
+
 /*
  * Implementación realizada en clase de nuestra clase de Validación :)
  *

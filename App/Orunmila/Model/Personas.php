@@ -1,7 +1,11 @@
 <?php
 namespace App\Orunmila\Model;
 
-abstract class Personas
+use App\Orunmila\Core\DBConnection;
+
+// poner como abstract?
+
+class Personas
 {
 
     private $dni;
@@ -126,8 +130,9 @@ abstract class Personas
     public function save()
     {
 
-        // $db = DBConnection::getConnection();
-        $db = mysqli_connect("190.228.29.68", "frey", "rkiGCB6cuzC2", "mel_recu");
+        $db = DBConnection::getConnection();
+        
+        //$db = mysqli_connect("190.228.29.68", "frey", "rkiGCB6cuzC2", "mel_recu");
 
         if (mysqli_connect_errno()) {
             printf("Fall� la conexi�n: %s\n", mysqli_connect_error());
@@ -135,59 +140,70 @@ abstract class Personas
         }
 
         $parametros = $this->jsonSerialize();
+        
+       // print_r($parametros);
 
-        // $sql = "INSERT INTO mel_recu.persona (dni, nombre, apellido, mail, direccion, telefono, genero, fecha_nacimiento, password ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $sql = "INSERT INTO mel_recu.persona (dni, nombre, apellido, mail, direccion, telefono, genero, fecha_nacimiento, password )
-VALUES ('" . $parametros['dni'] . "', '" . $parametros['nombre'] . "', '" . $parametros['apellido'] . "', '" . $parametros['mail'] . "', '" . $parametros['direccion'] . "', '" . $parametros['telefono'] . "', '" . $parametros['genero'] . "', '" . $parametros['fecha_nacimiento'] . "', '" . $parametros['password'] . "')";
+//         $sql = "INSERT INTO mel_recu.persona (dni, nombre, apellido, mail, direccion, telefono, genero, fecha_nac, password ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+//         print_r($parametros);
+//         if($db->query($sql, TRUE, $parametros)){
+//             return "funciono";       
+//         }
 
-        if (mysqli_query($db, $sql) === TRUE) {
-            printf("Se inserto con éxtio en la tabla person.\n");
-        }
+         $sql = "INSERT INTO mel_recu.persona (dni, nombre, apellido, mail, direccion, telefono, genero, fecha_nac, password )
+         VALUES ('" . $parametros['dni'] . "', '" . $parametros['nombre'] . "', '" . $parametros['apellido'] . "', '" . $parametros['mail'] . "', '" . $parametros['direccion'] . "', '" . $parametros['telefono'] . "', '" . $parametros['genero'] . "', '" . $parametros['fecha_nacimiento'] . "', '" . $parametros['password'] . "')";
+      
+         if($db->query($sql)){
+                    return "funciono";
+         }
+        
+//         if (mysqli_query($db, $sql) === TRUE) {
+//             printf("Se inserto con éxtio en la tabla person.\n");
+//         }
 
-        // $stm = $db->stmt_init();
-        // $stm->prepare($sql);
+//         // $stm = $db->stmt_init();
+//         // $stm->prepare($sql);
 
-        // $parametros = array();
+//         // $parametros = array();
 
-        // $stm->bind_param("sssssssss", $parametros['dni'], $parametros['nombre'], $parametros['apellido'], $parametros['mail'], $parametros['direccion'], $parametros['telefono'], $parametros['genero'], $parametros['fecha_nacimiento'], $parametros['password']);
+//         // $stm->bind_param("sssssssss", $parametros['dni'], $parametros['nombre'], $parametros['apellido'], $parametros['mail'], $parametros['direccion'], $parametros['telefono'], $parametros['genero'], $parametros['fecha_nacimiento'], $parametros['password']);
 
-        // if ($stm->execute()) {
-        // return true;
-        // } else {
-        // return false;
-        // }
+//         // if ($stm->execute()) {
+//         // return true;
+//         // } else {
+//         // return false;
+//         // }
 
-        // $sentencia = mysqli_stmt_init($db);
-        // if (mysqli_stmt_prepare($sentencia, $sql)) {
+//         // $sentencia = mysqli_stmt_init($db);
+//         // if (mysqli_stmt_prepare($sentencia, $sql)) {
 
-        // /* vincular los par�metros para los marcadores */
-        // mysqli_stmt_bind_param($sentencia, "sssssssss", $parametros['dni'], $parametros['nombre'], $parametros['apellido'], $parametros['mail'], $parametros['direccion'], $parametros['telefono'], $parametros['genero'], $parametros['fecha_nacimiento'], $parametros['password']);
+//         // /* vincular los par�metros para los marcadores */
+//         // mysqli_stmt_bind_param($sentencia, "sssssssss", $parametros['dni'], $parametros['nombre'], $parametros['apellido'], $parametros['mail'], $parametros['direccion'], $parametros['telefono'], $parametros['genero'], $parametros['fecha_nacimiento'], $parametros['password']);
 
-        // /* ejecutar la consulta */
-        // if (mysqli_stmt_execute($sentencia)) {
-        // print_r("true");
-        // return true;
-        // } else {
-        // print_r("false");
-        // return false;
-        // }
-        // // /* vincular las variables de resultados */
-        // // mysqli_stmt_bind_result($sentencia, $distrito);
+//         // /* ejecutar la consulta */
+//         // if (mysqli_stmt_execute($sentencia)) {
+//         // print_r("true");
+//         // return true;
+//         // } else {
+//         // print_r("false");
+//         // return false;
+//         // }
+//         // // /* vincular las variables de resultados */
+//         // // mysqli_stmt_bind_result($sentencia, $distrito);
 
-        // // /* obtener el valor */
-        // // mysqli_stmt_fetch($sentencia);
+//         // // /* obtener el valor */
+//         // // mysqli_stmt_fetch($sentencia);
 
-        // // printf("%s est� en el distrito de %s\n", $ciudad, $distrito);
+//         // // printf("%s est� en el distrito de %s\n", $ciudad, $distrito);
 
-        // /* cerrar la sentencia */
-        // mysqli_stmt_close($sentencia);
-        // }
+//         // /* cerrar la sentencia */
+//         // mysqli_stmt_close($sentencia);
+//         // }
 
-        // else{
-        // print_r("llorar");
-        // }
+//         // else{
+//         // print_r("llorar");
+//         // }
 
-        /* cerrar la conexi�n */
+//         /* cerrar la conexi�n */
         mysqli_close($db);
     }
 

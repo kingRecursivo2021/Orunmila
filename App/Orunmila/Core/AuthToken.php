@@ -1,12 +1,16 @@
 <?php
 namespace App\Orunmila\Core;
 
+use Exception;
 use App\Orunmila\Envorinment\Parser;
 use App\Orunmila\Lcobucci\JWT\Builder;
 use App\Orunmila\Lcobucci\JWT\Token;
 use App\Orunmila\Lcobucci\JWT\ValidationData;
 use App\Orunmila\Lcobucci\JWT\Signer\Key;
 use App\Orunmila\Lcobucci\JWT\Signer\Hmac\Sha256;
+
+use App\Orunmila\Model\Personas;
+include '../Model/Personas.php';
 
 /**
  * Class Auth
@@ -42,10 +46,10 @@ class AuthToken
     {
         // Buscamos si el usuario existe.
         try {
-            $usuario = (new Usuarios())->getByEmail($email);
+            $usuario = (new Personas())->getByEmail($email);
         } catch (Exception $e) {
 
-            $usuario = (new Usuarios())->getByUsuario($email);
+            $usuario = (new Personas())->getByUsuario($email);
         }
         // Verificamos si el usuario existe.
         if ($usuario !== null) {
@@ -168,7 +172,7 @@ class AuthToken
      * Retorna el usuario autenticado.
      * Si no está autenticado, retorna null.
      *
-     * @return Usuarios
+     * @return Personas
      */
     public function getUsuario()
     {
@@ -176,6 +180,6 @@ class AuthToken
             return null;
         }
 
-        return (new Usuarios())->getById($this->id);
+        return (new Personas())->getById($this->id);
     }
 }
