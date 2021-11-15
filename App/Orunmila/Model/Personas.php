@@ -3,8 +3,6 @@ namespace App\Orunmila\Model;
 
 use App\Orunmila\Core\DBConnection;
 
-// poner como abstract?
-
 class Personas
 {
 

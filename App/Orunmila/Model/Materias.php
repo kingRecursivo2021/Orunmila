@@ -1,6 +1,8 @@
 <?php
 namespace App\Orunmila\Model;
 
+use App\Orunmila\Core\DBConnection;
+
 class Materias
 {
 
@@ -16,13 +18,13 @@ class Materias
     
     private $esExtraCurricular;
     
-    private $plan_de_estudio;
-    
     private $tareas = Array();
     
     private $examenes = Array();
     
     private $eventos = Array();
+    
+    private $asistencia = Array();
     
     public function __construct() {
 
@@ -31,6 +33,7 @@ class Materias
     /**
      * @return mixed
      */
+    
     public function getEsExtraCurricular()
     {
         return $this->esExtraCurricular;
@@ -39,10 +42,6 @@ class Materias
     /**
      * @return mixed
      */
-    public function getPlan_de_estudio()
-    {
-        return $this->plan_de_estudio;
-    }
 
     /**
      * @param mixed $esExtraCurricular
@@ -52,14 +51,6 @@ class Materias
         $this->esExtraCurricular = $esExtraCurricular;
     }
 
-    /**
-     * @param mixed $plan_de_estudio
-     */
-    public function setPlan_de_estudio($plan_de_estudio)
-    {
-        $this->plan_de_estudio = $plan_de_estudio;
-    }
-   
     /**
      *
      * @return mixed
@@ -157,6 +148,42 @@ class Materias
         $this->cargaHoraria = $cargaHoraria;
         $this->programa = $programa;
         $this->esExtraCurricular = $esExtraCurricular;
+     
+    }
+    
+    public function jsonSerialize()
+    {
+        $parametros = array();
+        
+        $parametros['codigoMateria'] = $this->id;
+        $parametros['nombreMateria'] = $this->nombre;
+        $parametros['horario'] = $this->horario;
+        $parametros['cargaHoras'] = $this->cargaHoraria;
+        $parametros['programa'] = $this->programa;
+        $parametros['confirma'] = $this->esExtraCurricular;
+        
+        return $parametros;
+    }
+    
+    public function save()
+    {
+        $db = DBConnection::getConnection();
+        
+        if (mysqli_connect_errno()) {
+            printf("Fall� la conexi�n: %s\n", mysqli_connect_error());
+            exit();
+        }
+        
+        $parametros = $this->jsonSerialize();
+        
+        $sql = "INSERT INTO mel_recu.materia (id_materia, nombre, horario, carga_horaria, programa, extra_curricular)
+         VALUES ('" . $parametros['codigoMateria'] . "', '" . $parametros['nombreMateria'] . "', '" . $parametros['horario'] . "', '" . $parametros['cargaHoras'] . "', '" . $parametros['programa'] . "', '" . $parametros['confirma']. "')";
+        
+        if($db->query($sql)){
+            return "funciono";
+        }
+        
+        mysqli_close($db);
     }
     
 }

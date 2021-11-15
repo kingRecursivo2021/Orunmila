@@ -10,7 +10,8 @@
 <body>
 
 <?php 
-	include "navBar.php"
+	include "navBar.php";
+
 ?>
 
 <h1>Administrativos Screen</h1>
@@ -99,8 +100,9 @@
 
 <br>
 
-<div class="ocultar">
-	<form method="post" action="" name="altaMaterias" >
+<!-- <div class="ocultar"> -->
+<div> 
+	<form method="post" action="../App/Orunmila/Controllers/MateriasController.php" name="altaMaterias" >
 	
 	    <div class="form-element">
 	    <h3>Alta de Materia</h3>
@@ -115,14 +117,32 @@
 	    </div>
 	    
 	     <div class="form-element">
-	        <label>Año segun plan de estudio</label>
-	        <input type="number" name="añoPlan" required />
+	        <label>Horario</label>
+	        <input type="text" name="horario" required />
 	    </div>
 	    
 	     <div class="form-element">
-	        <label>Temario</label>
-	        <input type="text" name="temario" required />
+	        <label>Carga Horaria</label>
+	        <input type="number" name="cargaHoras" required />
 	    </div>
+	    
+	     <div class="form-element">
+	        <label>Programa</label>
+	        <input type="text" name="programa" required />
+	    </div>
+	    
+	    <p>Seleccione si la materia es extracurricular:</p>
+
+        <div>
+          <input type="radio" id="si" name="confirma" value="si"
+                 checked>
+          <label for="si">Si</label>
+        </div>
+
+        <div>
+          <input type="radio" id="no" name="confirma" value="no">
+          <label for="no">No</label>
+        </div>
 	    
 	    <button class ="btn btn-primary" type="submit" name="ingresar" value="login">Registrar</button>
 	    
@@ -156,6 +176,16 @@
 </div>
 
 <br>
+
+<div>
+<form method="post" name="altaPlan">
+<h3>Alta plan de estudio</h3>
+	<div class="form-element">
+	        <label>Horario</label>
+	        <input type="text" name="horario" required />
+	    </div>
+</form>
+</div>
 
 </body>
 </html>
