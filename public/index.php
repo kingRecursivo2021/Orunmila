@@ -1,5 +1,4 @@
 <?php
-use App\Orunmila\Core\App;
 
 session_start();
 
@@ -23,6 +22,6 @@ require $rootPath . '/app/routes.php';
 $app2 = new App($rootPath);
 
 // Arrancamos la App.
-$app->run();
+$app2->run();
 
 
