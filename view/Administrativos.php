@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+if (array_key_exists("mail", $_SESSION) && $_SESSION['mail']!=null && array_key_exists("categoria", $_SESSION) && $_SESSION['categoria']==1) {
+  
+}
+else{
+    header("Location: http://localhost/Seminario/App/Index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -11,16 +22,15 @@
 
 <?php 
 	include "navBar.php";
-
 ?>
 
 <h1>Administrativos Screen</h1>
 
-<div class="mostrar">
+<div class="<?=($_GET['pantalla']==1 && $_GET['accion']==1?"mostrar":"ocultar")?>">
 
 	<form method="POST" action="../App/Orunmila/Controllers/AlumnosController.php" name="altaAlumnos" >
     <div class="form-element">
-    <h3>Alta de alumno</h3>
+    <h3>Alta de persona</h3>
     </div>
     <div class="form-element">
         <label>Nombre</label>
@@ -65,6 +75,25 @@
         <label>Password</label>
         <input type="password" name="password" required />
     </div>
+    <br>
+    <p>Selecciones el tipo de perfil</p>
+       <div>
+          <input type="radio" id="alumno" name="perfil" value="alumno"
+                 checked>
+          <label for="alumno">Alumno</label>
+        </div>
+
+        <div>
+          <input type="radio" id="profesor" name="perfil" value="profesor">
+          <label for="profesor">Profesor</label>
+        </div>
+        
+          <div>
+          <input type="radio" id="responsable" name="perfil" value="responsable">
+          <label for="responsable">Responsable</label>
+        </div>
+        
+        <br>
     
     <button class ="btn btn-primary" type="submit" name="ingresar" value="login">Registrar</button>
     
@@ -74,10 +103,10 @@
 
 <br>
 
-<div class="ocultar">
+<div class="<?=($_GET['pantalla']==1 && $_GET['accion']==2?"mostrar":"ocultar")?>">
 	<form action="" name="modificarAlumnos">
 		<div>
-			<h3>Modificar datos de alumno</h3>
+			<h3>Modificar datos de persona</h3>
 			<label>Ingresar dni</label>
 			<input type ="search" name = "dni" required>
 			<button type="button" class="btn btn-primary">Modificar</button>
@@ -87,13 +116,13 @@
 
 <br>
 
-<div class="ocultar">
-	<form action="" name="bajaAlumnos">
+<div class="<?=($_GET['pantalla']==1 && $_GET['accion']==3?"mostrar":"ocultar")?>" >
+	<form action="../App/Orunmila/Controllers/EliminarPersonaController.php" method="POST" name="bajapersona">
 		<div>
-			<h3>Baja de alumno</h3>
+			<h3>Baja de persona</h3>
 			<label>Ingresar dni</label>
 			<input type ="search" name = "dni" required>
-			<button type="button" class="btn btn-danger">Realizar baja</button>
+			<button type="submit" class="btn btn-danger">Realizar baja</button>
 		</div>
 	</form>
 </div>
@@ -101,7 +130,7 @@
 <br>
 
 <!-- <div class="ocultar"> -->
-<div> 
+<div class= "<?=($_GET['pantalla']==2 && $_GET['accion']==1?"mostrar":"ocultar")?>"> 
 	<form method="post" action="../App/Orunmila/Controllers/MateriasController.php" name="altaMaterias" >
 	
 	    <div class="form-element">
@@ -151,7 +180,9 @@
 
 <br>
 
-<div class="ocultar">
+
+
+<div class="<?=($_GET['pantalla']==2 && $_GET['accion']==2?"mostrar":"ocultar")?>">
 	<form action="" name="modificarMaterias">
 		<div>
 			<h3>Modificar datos de materia</h3>
@@ -164,7 +195,7 @@
 
 <br>
 
-<div class="ocultar">
+<div class="<?=($_GET['pantalla']==2 && $_GET['accion']==3?"mostrar":"ocultar")?>">
 	<form action="" name ="bajaMaterias">
 		<div>
 			<h3>Baja de materia</h3>
@@ -177,7 +208,7 @@
 
 <br>
 
-<div>
+<div class = "<?=($_GET['pantalla']==4 && $_GET['accion']==1?"mostrar":"ocultar")?>">
 <form method="post" name="altaPlan">
 <h3>Alta plan de estudio</h3>
 	<div class="form-element">

@@ -3,7 +3,7 @@ namespace App\Orunmila\Core;
 
 include 'DBConnection.php';
 
-require_once 'App/Orunmila/Core/autoload.php';
+//require_once 'App/Orunmila/Core/autoload.php';
 
 session_start();
 /*

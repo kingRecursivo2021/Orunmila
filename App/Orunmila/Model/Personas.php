@@ -23,15 +23,13 @@ class Personas
     private $fecha_nacimiento;
 
     private $password;
+    
+    private $perfil;
 
-    /**
-     *
-     * @return mixed
-     */
     public function __construct()
     {}
 
-    public function cargaPersonas($dni, $nombre, $apellido, $mail, $direccion, $telefono, $genero, $fecha_nacimiento, $password)
+    public function cargaPersonas($dni, $nombre, $apellido, $mail, $direccion, $telefono, $genero, $fecha_nacimiento, $password, $perfil)
     {
         $this->dni = $dni;
         $this->nombre = $nombre;
@@ -42,7 +40,29 @@ class Personas
         $this->genero = $genero;
         $this->fecha_nacimiento = $fecha_nacimiento;
         $this->password = $password;
+        $this->perfil = $perfil;
+        
     }
+    /**
+     * @return mixed
+     */
+    public function getPerfil()
+    {
+        return $this->perfil;
+    }
+
+    /**
+     * @param mixed $perfil
+     */
+    public function setPerfil($perfil)
+    {
+        $this->perfil = $perfil;
+    }
+
+    /**
+     *
+     * @return mixed
+     */
 
     public function getFecha_nacimiennto()
     {
@@ -147,8 +167,12 @@ class Personas
 //             return "funciono";       
 //         }
 
-         $sql = "INSERT INTO mel_recu.persona (dni, nombre, apellido, mail, direccion, telefono, genero, fecha_nac, password )
-         VALUES ('" . $parametros['dni'] . "', '" . $parametros['nombre'] . "', '" . $parametros['apellido'] . "', '" . $parametros['mail'] . "', '" . $parametros['direccion'] . "', '" . $parametros['telefono'] . "', '" . $parametros['genero'] . "', '" . $parametros['fecha_nacimiento'] . "', '" . $parametros['password'] . "')";
+         $sql = "INSERT INTO mel_recu.persona (dni, nombre, apellido, mail, direccion, telefono, genero, fecha_nac, password, perfil )
+         VALUES ('" . $parametros['dni'] . "', '" . $parametros['nombre'] . "', '" . 
+         $parametros['apellido'] . "', '" . $parametros['mail'] . "', '" . 
+         $parametros['direccion'] . "', '" . $parametros['telefono'] . "', '" . 
+         $parametros['genero'] . "', '" . $parametros['fecha_nacimiento'] . "', '" . 
+         $parametros['password'] . "'  , '" . $parametros['perfil'] . "')";
       
          if($db->query($sql)){
                     return "funciono";
@@ -218,8 +242,29 @@ class Personas
         $parametros['fecha_nacimiento'] = $this->fecha_nacimiento;
         $parametros['password'] = $this->password;
         $parametros['telefono'] = $this->telefono;
+        $parametros['perfil'] = $this->perfil;
 
         return $parametros;
+    }
+    
+    public function jsonSerialize2()
+    {
+        $parametros=null;
+       
+        $parametros['dni'] = $this->dni;   
+        return $parametros;
+    }
+    
+    public function baja($dni) {
+        $db = DBConnection::getConnection();
+
+        $sql = "UPDATE mel_recu.persona set activo = 0 WHERE dni = '$dni'";
+        
+        if($db->query($sql)){
+            return "funciono";
+        }
+        
+        mysqli_close($db);
     }
 }
 ?>

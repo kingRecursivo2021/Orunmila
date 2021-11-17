@@ -1,5 +1,7 @@
 <?php
 
+//include '../App/Core/App.php';
+
 session_start();
 
 // Antes que nada, requerimos el autoload.
